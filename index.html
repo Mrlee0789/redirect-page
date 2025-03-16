@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuyển hướng...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #zalo-warning {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      color: #856404;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🔁 Đang kiểm tra trình duyệt...</h2>
+
+<div id="zalo-warning" style="display: none;">
+  <p><strong>⚠️ Bạn đang mở trang này trong ứng dụng Zalo.</strong></p>
+  <p>Zalo không hỗ trợ camera và tự động chụp ảnh.</p>
+  <p>👉 Vui lòng nhấn nút bên dưới để mở trong trình duyệt mặc định (Chrome/Safari).</p>
+  <p>Hoặc nhấn vào dấu ba chấm (⋮) và chọn "Mở bằng trình duyệt".</p>
+  <button onclick="openInBrowser()">Mở bằng trình duyệt</button>
+</div>
+
+<script>
+  const destinationUrl = "https://tuyentruyen.onrender.com";
+
+  function isZaloWebview() {
+    const ua = navigator.userAgent.toLowerCase();
+    return ua.includes("zalo");
+  }
+
+  function openInBrowser() {
+    window.open(destinationUrl, "_blank");
+  }
+
+  if (isZaloWebview()) {
+    document.getElementById("zalo-warning").style.display = "block";
+  } else {
+    // Tự động redirect nếu không phải Zalo
+    window.location.href = destinationUrl;
+  }
+</script>
+
+</body>
+</html>
